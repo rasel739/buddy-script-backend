@@ -1,11 +1,10 @@
 import httpStatus from 'http-status';
 import ApiError from '../../../errors/ApiError';
-import prisma from '../../../shared/prisma';
 import { ILogin, IUser, IUserResponse } from './auth.interface';
 import bcrypt from 'bcrypt';
 import config from '../../../config';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
-import { email } from 'zod';
+import { prisma } from '../../../shared/prisma';
 
 const userRegister = async (payload: IUser): Promise<IUserResponse> => {
   const existingUser = await prisma.user.findUnique({
@@ -20,7 +19,7 @@ const userRegister = async (payload: IUser): Promise<IUserResponse> => {
 
   const newUser = await prisma.user.create({
     data: {
-      name: payload.name,
+      fullName: payload.fullName,
       email: payload.email,
       password: hashedPassword,
     },
@@ -78,7 +77,7 @@ const getUser = async (
 
   const user = {
     id: userCheck.id,
-    name: userCheck.name,
+    name: userCheck.fullName,
     email: userCheck.email,
   };
 

@@ -3,8 +3,8 @@ import { Response } from 'express';
 type IApiReponse<T> = {
   statusCode: number;
   success: boolean;
-  message?: string | null;
-  data?: T | null;
+  message?: string | null | undefined;
+  data?: T | null | undefined;
 };
 
 const sendResponse = <T>(res: Response, data: IApiReponse<T>): void => {

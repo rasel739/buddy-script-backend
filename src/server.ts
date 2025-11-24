@@ -1,6 +1,6 @@
 import app from './app';
 import config from './config';
-import prisma from './shared/prisma';
+import { prisma } from './shared/prisma';
 
 async function bootstrap() {
   try {
