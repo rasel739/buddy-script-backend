@@ -1,3 +1,4 @@
+import { User } from '@prisma/client';
 import { IGenericErrorMessage } from './error';
 
 export type IGenericErrorResponse = {
@@ -30,4 +31,16 @@ export interface IPostResponse {
   isLiked: boolean;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface ICommentResponse {
+  id: string;
+  content: string;
+  postId: string;
+  author: User;
+  likesCount: number;
+  repliesCount: number;
+  isLiked: boolean;
+  createdAt: Date | string;
+  updatedAt: Date | string;
 }
