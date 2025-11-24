@@ -23,12 +23,7 @@ const globalErrorHandler: ErrorRequestHandler = (
 
   if (error instanceof Prisma.PrismaClientValidationError) {
     message = 'Database validation error';
-    errorMessages = [
-      {
-        path: '',
-        message: error.message,
-      },
-    ];
+    errorMessages = [{ path: '', message: error.message }];
     statusCode = 400;
   } else if (error instanceof ZodError) {
     const simplifiedError = handleZodError(error);
@@ -39,31 +34,16 @@ const globalErrorHandler: ErrorRequestHandler = (
   } else if (error instanceof ApiError) {
     statusCode = error.statusCode || 500;
     message = error.message || 'Internal Server Error';
-    errorMessages = [
-      {
-        path: '',
-        message: error.message,
-      },
-    ];
+    errorMessages = [{ path: '', message: error.message }];
   } else if (error instanceof Error) {
     message = error.message || 'Unexpected Error';
-    errorMessages = [
-      {
-        path: '',
-        message: error.message,
-      },
-    ];
+    errorMessages = [{ path: '', message: error.message }];
   } else {
     message = 'Unknown error occurred';
-    errorMessages = [
-      {
-        path: '',
-        message: JSON.stringify(error),
-      },
-    ];
+    errorMessages = [{ path: '', message: JSON.stringify(error) }];
   }
 
-  res.status(statusCode).json({
+  return res.status(statusCode).json({
     success: false,
     message,
     errorMessages,

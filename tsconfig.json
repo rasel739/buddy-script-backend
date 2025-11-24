@@ -3,9 +3,10 @@
     "rootDir": "./src",
     "outDir": "./dist",
 
-    "module": "esnext",
-    "target": "es2024",
+    "module": "commonjs",
+    "target": "es2022",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
 
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

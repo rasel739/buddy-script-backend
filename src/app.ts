@@ -31,7 +31,7 @@ app.use('/api/v1', routes);
 // test route
 app.use('/', (req: Request, res: Response, next: NextFunction) => {
   if (req.path === '/') {
-    res.status(httpStatus.OK).json({
+    return res.status(httpStatus.OK).json({
       success: true,
       message: 'Server is running',
       timestamp: new Date().toISOString(),
@@ -44,8 +44,8 @@ app.use('/', (req: Request, res: Response, next: NextFunction) => {
 app.use(globalErrorHandler);
 
 // handle not found routes
-app.use((req: Request, res: Response, next: NextFunction) => {
-  res.status(httpStatus.NOT_FOUND).json({
+app.use((req: Request, res: Response) => {
+  return res.status(httpStatus.NOT_FOUND).json({
     success: false,
     message: 'Not Found',
     errorMessages: [
@@ -55,7 +55,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
       },
     ],
   });
-  next();
 });
 
 export default app;
