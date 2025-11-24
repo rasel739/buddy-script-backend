@@ -10,7 +10,7 @@
 
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-
+    "noImplicitAny": false,
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,

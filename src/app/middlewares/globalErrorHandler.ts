@@ -1,11 +1,12 @@
 import { ErrorRequestHandler, Request, Response, NextFunction } from 'express';
-import { Prisma } from '@prisma/client';
+
 import { ZodError } from 'zod';
 import config from '../../config';
 import ApiError from '../../errors/ApiError';
 import handleClientError from '../../errors/handleClientError';
 import handleZodError from '../../errors/handleZodError';
 import { IGenericErrorMessage } from '../../interface/error';
+import { Prisma } from '@prisma/client';
 
 const globalErrorHandler: ErrorRequestHandler = (
   error,
