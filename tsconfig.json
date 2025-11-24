@@ -17,7 +17,7 @@
 
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
-
+    "types": ["node", "express", "multer"],
     "strict": true,
     "jsx": "react-jsx",
 
