@@ -2,6 +2,7 @@ import express from 'express';
 import { AuthRoutes } from '../modules/auth/auth.route';
 import { PostRoutes } from '../modules/post/post.route';
 import { CommentRoutes } from '../modules/comment/comment.route';
+import { ReplyRoutes } from '../modules/reply/reply.route';
 
 const router = express.Router();
 
@@ -18,6 +19,10 @@ const moduleRoutes = [
   {
     path: '/comment',
     route: CommentRoutes,
+  },
+  {
+    path: '/reply',
+    route: ReplyRoutes,
   },
 ];
 
