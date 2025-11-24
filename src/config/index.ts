@@ -8,7 +8,10 @@ export default {
   port: process.env.PORT || 5000,
   database_url: process.env.DATABASE_URL,
   bycrypt_salt_rounds: process.env.BCRYPT_SALT_ROUNDS || '10',
-  allowed_origins: process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:5000'],
+  allowed_origins: process.env.ALLOWED_ORIGINS?.split(',') || [
+    'http://localhost:5000',
+    'http://localhost:51212',
+  ],
   cloudinary: {
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,

@@ -44,3 +44,14 @@ export interface ICommentResponse {
   createdAt: Date | string;
   updatedAt: Date | string;
 }
+
+export interface IReplyResponse {
+  id: string;
+  content: string;
+  commentId: string;
+  author: any;
+  likesCount: number;
+  isLiked: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
