@@ -7,6 +7,7 @@ import { IPostResponse } from '../../../interface/common';
 
 const createPost = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.user as { id: string };
+
   const result = await PostService.createPost(id, req.body, req.file);
 
   sendResponse<IPostResponse>(res, {

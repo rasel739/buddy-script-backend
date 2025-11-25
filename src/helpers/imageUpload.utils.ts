@@ -13,7 +13,8 @@ export const validateImage = async (file: Express.Multer.File) => {
     );
   }
   const fileExtension = file.originalname.split('.').pop()?.toLowerCase();
-  if (!fileExtension || ALLOWED_FORMATS.includes(fileExtension)) {
+
+  if (!fileExtension || !ALLOWED_FORMATS.includes(fileExtension)) {
     throw new ApiError(
       httpStatus.BAD_REQUEST,
       `Invalid file format. Allowed formats: ${ALLOWED_FORMATS.join(', ')}`
@@ -63,7 +64,7 @@ export const uploadToCloudinary = async (
     const result = await new Promise<any>((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(
         {
-          folder: `social-feed/${folder}`,
+          folder: `post-feed/${folder}`,
           resource_type: 'image',
           transformation: [{ quality: 'auto:good' }, { fetch_format: 'auto' }],
         },
