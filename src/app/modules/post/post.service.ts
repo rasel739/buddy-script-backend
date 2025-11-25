@@ -23,7 +23,7 @@ const createPost = async (
     data: {
       content: data.content,
       imageUrl: imageUrl || data.imageUrl,
-      isPrivate: data.isPrivate,
+      isPrivate: Boolean(data.isPrivate),
       authorId: userId,
     },
     include: {
