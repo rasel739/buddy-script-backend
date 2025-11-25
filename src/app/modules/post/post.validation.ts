@@ -4,7 +4,13 @@ const createPostZodSchema = z.object({
   body: z.object({
     content: z.string().min(1, 'Content is required').max(5000),
     imageUrl: z.string().optional(),
-    isPrivate: z.boolean().default(false),
+    isPrivate: z
+      .union([z.string(), z.boolean()])
+      .optional()
+      .transform((val) => {
+        if (typeof val === 'boolean') return val;
+        return val === 'true';
+      }),
   }),
 });
 
